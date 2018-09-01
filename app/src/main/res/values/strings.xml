@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Prueba</string>
-    <string name="edit_message">Enter a message</string>
-    <string name="button_send">Send</string>
-    <string name="textview">TextView</string>
+    <string name="app_name">Práctica</string>
+    <string name="menu_settings">Configuraciones</string>
+    <string name="button_label">Mostrar Mensaje</string>
+    <string name="image_content">Imagen</string>
 </resources>
