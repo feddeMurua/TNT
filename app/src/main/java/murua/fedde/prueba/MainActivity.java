@@ -1,8 +1,14 @@
 package murua.fedde.prueba;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Notification;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,23 +17,50 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static murua.fedde.prueba.NotificationUtils.ANDROID_CHANNEL_ID;
+//import static murua.fedde.prueba.NotificationUtils.ANDROID_CHANNEL_ID;
 
 public class MainActivity extends Activity {
 
-    private Button toast_button;
-    private Button notification_button;
+
     private NotificationUtils mNotificationUtils;
+
+    private ImageView imageView ;
+    private Intent intent ;
+    public  static final int RequestPermissionCode  = 1 ;
+
+    //View clean_button = (Button)findViewById(R.id.clean_button);
 
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toast_button = findViewById(R.id.toast_button);
+        /* CLEAN */
+
+        /*
+        clean_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    imageView = findViewById(R.id.imageView);
+                    imageView .setImageResource(android.R.color.transparent);
+                    clean_button.setVisibility(View.GONE);
+                } catch (Exception e){
+                    //No se cargo la imagen todavía
+                }
+
+            }
+        });
+        */
+
+        /* TOAST */
+
+        View toast_button = findViewById(R.id.toast_button);
 
         toast_button.setOnClickListener(new OnClickListener() {
             /*
@@ -59,12 +92,14 @@ public class MainActivity extends Activity {
             }
         });
 
+        /* NOTIFICACIONES */
+
         mNotificationUtils = new NotificationUtils(this);
         /*
         final EditText editTextTitleAndroid = (EditText) findViewById(R.id.et_android_title);
         final EditText editTextAuthorAndroid = (EditText) findViewById(R.id.et_android_author);
         */
-        notification_button = (Button)findViewById(R.id.notification_button);
+        View notification_button = (Button)findViewById(R.id.notification_button);
 
         notification_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +118,77 @@ public class MainActivity extends Activity {
             }
         });
 
+        /* CAMARA */
+
+        View camera_button = (Button)findViewById(R.id.camera_button);
+        imageView = (ImageView)findViewById(R.id.imageView);
+
+        EnableRuntimePermission();
+
+        camera_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
+                startActivityForResult(intent, 7);
+
+            }
+        });
+
+
+
+
     } // FIN método OnCreate
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        if (requestCode == 7 && resultCode == RESULT_OK) {
 
-}
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+
+            imageView.setImageBitmap(bitmap);
+
+            //clean_button.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void EnableRuntimePermission(){
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                Manifest.permission.CAMERA))
+        {
+
+            Toast.makeText(MainActivity.this,"Permiso de Cámara, permite acceder a la app de la cámara", Toast.LENGTH_LONG).show();
+
+        } else {
+
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{
+                    Manifest.permission.CAMERA}, RequestPermissionCode);
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int RC, String per[], int[] PResult) {
+
+        switch (RC) {
+
+            case RequestPermissionCode:
+
+                if (PResult.length > 0 && PResult[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Toast.makeText(MainActivity.this, "Permiso Concedido, La aplicación puede acceder a la cámara.", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    Toast.makeText(MainActivity.this, "Permiso Cancelado, La aplicación NO puede acceder a la cámara.", Toast.LENGTH_LONG).show();
+
+                }
+                break;
+        }
+    }
+
+} // FIN de la clase
+
+// TODO: 1/9/2018: Desde la app un botón que abra la cámara , cuando sacas la foto volves a la app automáticamente y te muestra la foto en un imageview
