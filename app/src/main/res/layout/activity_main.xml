@@ -39,10 +39,10 @@
         android:text="Capturar Imagen con la Cámara" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/imageView" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/clean_button"

@@ -32,31 +32,11 @@ public class MainActivity extends Activity {
     private Intent intent ;
     public  static final int RequestPermissionCode  = 1 ;
 
-    //View clean_button = (Button)findViewById(R.id.clean_button);
 
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /* CLEAN */
-
-        /*
-        clean_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                try {
-                    imageView = findViewById(R.id.imageView);
-                    imageView .setImageResource(android.R.color.transparent);
-                    clean_button.setVisibility(View.GONE);
-                } catch (Exception e){
-                    //No se cargo la imagen todavía
-                }
-
-            }
-        });
-        */
 
         /* TOAST */
 
@@ -118,6 +98,24 @@ public class MainActivity extends Activity {
             }
         });
 
+        /* CLEAN */
+       final View clean_button = (Button)findViewById(R.id.clean_button);
+
+        clean_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    imageView = findViewById(R.id.imageView);
+                    imageView .setImageResource(android.R.color.transparent);
+                    clean_button.setVisibility(View.GONE);
+                } catch (Exception e){
+                    //No se cargo la imagen todavía
+                }
+
+            }
+        });
+
         /* CAMARA */
 
         View camera_button = (Button)findViewById(R.id.camera_button);
@@ -133,6 +131,7 @@ public class MainActivity extends Activity {
 
                 startActivityForResult(intent, 7);
 
+                clean_button.setVisibility(view.VISIBLE);
             }
         });
 
@@ -148,8 +147,6 @@ public class MainActivity extends Activity {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 
             imageView.setImageBitmap(bitmap);
-
-            //clean_button.setVisibility(View.VISIBLE);
         }
     }
 
