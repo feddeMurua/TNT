@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Práctica</string>
     <string name="menu_settings">Configuraciones</string>
-    <string name="button_label">Mostrar Mensaje</string>
+    <string name="button_label">Mostrar Mensaje Toast</string>
     <string name="image_content">Imagen</string>
 </resources>

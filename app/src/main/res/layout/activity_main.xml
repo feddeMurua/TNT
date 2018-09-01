@@ -5,9 +5,31 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/mainbutton"
+        android:id="@+id/toast_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_label" />
+
+    <!--- Texts inputs -->
+
+    <!--
+    <EditText
+        android:id="@+id/et_android_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título"/>
+
+    <EditText
+        android:id="@+id/et_android_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Autor"/>
+     -->
+
+    <Button
+        android:id="@+id/notification_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notificación" />
 
 </LinearLayout>

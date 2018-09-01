@@ -1,28 +1,35 @@
 package murua.fedde.prueba;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static murua.fedde.prueba.NotificationUtils.ANDROID_CHANNEL_ID;
+
 public class MainActivity extends Activity {
 
-    private Button button;
+    private Button toast_button;
+    private Button notification_button;
+    private NotificationUtils mNotificationUtils;
 
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = findViewById(R.id.mainbutton);
+        toast_button = findViewById(R.id.toast_button);
 
-        button.setOnClickListener(new OnClickListener() {
+        toast_button.setOnClickListener(new OnClickListener() {
             /*
             @Override
             public void onClick(View arg0) {
@@ -51,5 +58,33 @@ public class MainActivity extends Activity {
                 toast.show();
             }
         });
-    }
+
+        mNotificationUtils = new NotificationUtils(this);
+        /*
+        final EditText editTextTitleAndroid = (EditText) findViewById(R.id.et_android_title);
+        final EditText editTextAuthorAndroid = (EditText) findViewById(R.id.et_android_author);
+        */
+        notification_button = (Button)findViewById(R.id.notification_button);
+
+        notification_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*
+                String title = editTextTitleAndroid.getText().toString();
+                String author = editTextAuthorAndroid.getText().toString();
+
+                if (!TextUtils.isEmpty(title) && !TextUtils.isEmpty(author)) {
+                    Notification.Builder nb = mNotificationUtils.getAndroidChannelNotification(title, "By " + author);
+                    mNotificationUtils.getManager().notify(101, nb.build());
+                }
+                */
+                Notification.Builder nb = mNotificationUtils.getAndroidChannelNotification("Título de la Notificación", "Cuerpo del Mensaje");
+                mNotificationUtils.getManager().notify(101, nb.build());
+            }
+        });
+
+    } // FIN método OnCreate
+
+
+
 }
