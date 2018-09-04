@@ -28,9 +28,9 @@ public class MainActivity extends Activity {
 
     private NotificationUtils mNotificationUtils;
 
-    private ImageView imageView ;
-    private Intent intent ;
-    public  static final int RequestPermissionCode  = 1 ;
+    private ImageView imageView;
+    private Intent intent;
+    public static final int RequestPermissionCode = 1;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
                 // get your toast.xml layout
                 LayoutInflater inflater = getLayoutInflater();
 
-                View layout = inflater.inflate(R.layout.toast,(ViewGroup) findViewById(R.id.toast_layout_id));
+                View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.toast_layout_id));
 
                 // set a message
                 TextView text = (TextView) layout.findViewById(R.id.text);
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
         final EditText editTextTitleAndroid = (EditText) findViewById(R.id.et_android_title);
         final EditText editTextAuthorAndroid = (EditText) findViewById(R.id.et_android_author);
         */
-        View notification_button = (Button)findViewById(R.id.notification_button);
+        View notification_button = (Button) findViewById(R.id.notification_button);
 
         notification_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
         });
 
         /* CLEAN */
-       final View clean_button = (Button)findViewById(R.id.clean_button);
+        final View clean_button = (Button) findViewById(R.id.clean_button);
 
         clean_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +107,9 @@ public class MainActivity extends Activity {
 
                 try {
                     imageView = findViewById(R.id.imageView);
-                    imageView .setImageResource(android.R.color.transparent);
+                    imageView.setImageResource(android.R.color.transparent);
                     clean_button.setVisibility(View.GONE);
-                } catch (Exception e){
+                } catch (Exception e) {
                     //No se cargo la imagen todavía
                 }
 
@@ -118,8 +118,8 @@ public class MainActivity extends Activity {
 
         /* CAMARA */
 
-        View camera_button = (Button)findViewById(R.id.camera_button);
-        imageView = (ImageView)findViewById(R.id.imageView);
+        View camera_button = (Button) findViewById(R.id.camera_button);
+        imageView = (ImageView) findViewById(R.id.imageView);
 
         EnableRuntimePermission();
 
@@ -136,8 +136,6 @@ public class MainActivity extends Activity {
         });
 
 
-
-
     } // FIN método OnCreate
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -150,17 +148,16 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void EnableRuntimePermission(){
+    public void EnableRuntimePermission() {
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-                Manifest.permission.CAMERA))
-        {
+                Manifest.permission.CAMERA)) {
 
-            Toast.makeText(MainActivity.this,"Permiso de Cámara, permite acceder a la app de la cámara", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Permiso de Cámara, permite acceder a la app de la cámara", Toast.LENGTH_LONG).show();
 
         } else {
 
-            ActivityCompat.requestPermissions(MainActivity.this,new String[]{
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
                     Manifest.permission.CAMERA}, RequestPermissionCode);
 
         }
@@ -184,6 +181,13 @@ public class MainActivity extends Activity {
                 }
                 break;
         }
+    }
+
+    //SEGUNDA ACTIVIDAD
+
+    public void buttonClick(View view){
+        Intent mintent = new Intent(MainActivity.this, SegundaActividad.class);
+        startActivity(mintent);
     }
 
 } // FIN de la clase
