@@ -190,6 +190,13 @@ public class MainActivity extends Activity {
         startActivity(mintent);
     }
 
+    //ACTIVIDAD ROOM
+
+    public void buttonClick_room(View view){
+        Intent mintent = new Intent(MainActivity.this, ActividadRoom.class);
+        startActivity(mintent);
+    }
+
 } // FIN de la clase
 
 // TODO: 1/9/2018: Desde la app un botón que abra la cámara , cuando sacas la foto volves a la app automáticamente y te muestra la foto en un imageview

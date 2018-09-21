@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SegundaActividad" />
+        <activity android:name=".ActividadRoom" />
     </application>
     <uses-permission android:name="android.permission.CAMERA" />
 </manifest>
