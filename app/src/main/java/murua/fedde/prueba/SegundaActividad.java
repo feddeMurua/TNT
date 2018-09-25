@@ -6,6 +6,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import murua.fedde.R;
+
 public class SegundaActividad extends AppCompatActivity {
 
     RecyclerViewAdapter adapter;
