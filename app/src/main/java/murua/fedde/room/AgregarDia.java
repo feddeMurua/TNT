@@ -18,7 +18,7 @@ public class AgregarDia extends AppCompatActivity {
     private EditText et_vaso;
     private DiaDatabase diaDatabase;
     private Dia dia;
-
+    private boolean update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +27,23 @@ public class AgregarDia extends AppCompatActivity {
         diaDatabase = DiaDatabase.getInstance(AgregarDia.this);
         Button button = findViewById(R.id.but_save);
 
+        if ( ( dia =(Dia)getIntent().getSerializableExtra("dia"))!=null ){
+            //getSupportActionBar().setTitle("Actualizar Día");
+            update = true;
+            button.setText("Actualizar");
+            et_vaso.setText(Integer.toString(dia.getVasos()));
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // fetch data and create dia object
-                dia = new Dia(5);
-
-                // create worker thread to insert data into database
-                new InsertTask(AgregarDia.this,dia).execute();
+                if (update){
+                    dia.setVasos(Integer.parseInt(et_vaso.getText().toString()));
+                    diaDatabase.getDiaDao().update(dia);
+                    setResult(dia,2);
+                }else {
+                    dia = new Dia(Integer.parseInt(et_vaso.getText().toString()));
+                    new InsertTask(AgregarDia.this,dia).execute();
+                }
             }
         });
 

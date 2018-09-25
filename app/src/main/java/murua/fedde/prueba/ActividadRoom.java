@@ -115,8 +115,8 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
     @Override
     public void OnDiaItemClick(final int pos) {
         new AlertDialog.Builder(ActividadRoom.this)
-                .setTitle("Select Options")
-                .setItems(new String[]{"Delete", "Update"}, new DialogInterface.OnClickListener() {
+                .setTitle("Seleccionar Opciones")
+                .setItems(new String[]{"Borrar", "Actualizar"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         switch (i){
@@ -129,7 +129,7 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
                                 ActividadRoom.this.pos = pos;
                                 startActivityForResult(
                                         new Intent(ActividadRoom.this,
-                                                ActividadRoom.class).putExtra("note", String.valueOf(dias.get(pos))),
+                                                AgregarDia.class).putExtra("dia",dias.get(pos)),
                                         100);
 
                                 break;

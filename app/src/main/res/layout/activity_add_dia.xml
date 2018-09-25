@@ -30,7 +30,7 @@
 
         <Button
             android:id="@+id/but_save"
-            android:text="Save"
+            android:text="Guardar"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
