@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import murua.fedde.R;
@@ -36,7 +36,8 @@ public class DiaAdapter extends RecyclerView.Adapter<DiaAdapter.BeanHolder> {
     @Override
     public void onBindViewHolder(BeanHolder holder, int position) {
         Log.e("bind", "onBindViewHolder: "+ list.get(position));
-        holder.textViewTitle.setText((list.get(position).getTitulo()).toString());
+        SimpleDateFormat targetFormat = new SimpleDateFormat("dd/MM/yyyy");
+        holder.textViewTitle.setText(targetFormat.format(list.get(position).getTitulo()) + ", " + list.get(position).getVasos().toString() + " vasos");
     }
 
     @Override

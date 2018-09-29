@@ -17,7 +17,6 @@
         </activity>
         <activity android:name=".prueba.SegundaActividad" />
         <activity android:name=".prueba.ActividadRoom" />
-        <activity android:name=".room.AgregarDia" />
         <activity android:name=".room.AgregarDiaVaso" />
     </application>
     <uses-permission android:name="android.permission.CAMERA" />

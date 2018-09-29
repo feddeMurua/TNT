@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import murua.fedde.R;
-import murua.fedde.room.AgregarDia;
 import murua.fedde.room.AgregarDiaVaso;
 import murua.fedde.room.Dia;
 import murua.fedde.room.DiaAdapter;
@@ -44,7 +44,7 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
     private void displayList(){
         // initialize database instance
         diaDatabase = DiaDatabase.getInstance(ActividadRoom.this);
-        // fetch list of notes in background thread
+        // fetch list of dias in background thread
         new ActividadRoom.RetrieveTask(this).execute();
     }
 
@@ -59,9 +59,9 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
 
         @Override
         protected List<Dia> doInBackground(Void... voids) {
-            if (activityReference.get()!=null)
+            if (activityReference.get()!=null) {
                 return activityReference.get().diaDatabase.getDiaDao().getAll();
-            else
+            }else
                 return null;
         }
 
@@ -107,7 +107,12 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
             if( resultCode == 1){
                 dias.add((Dia) data.getSerializableExtra("dia"));
             }else if( resultCode == 2){
-                dias.set(pos,(Dia) data.getSerializableExtra("dia"));
+                try{
+                    dias.set(pos,(Dia) data.getSerializableExtra("dia"));
+                } catch (Exception e){
+                    Log.e("****","Atrapo excep");
+                }
+
             }
             listVisibility();
         }
@@ -130,7 +135,7 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
                                 ActividadRoom.this.pos = pos;
                                 startActivityForResult(
                                         new Intent(ActividadRoom.this,
-                                                AgregarDia.class).putExtra("dia",dias.get(pos)),
+                                                AgregarDiaVaso.class).putExtra("dia",dias.get(pos)),
                                         100);
 
                                 break;
