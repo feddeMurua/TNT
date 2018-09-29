@@ -6,6 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -23,9 +24,12 @@ public interface DiaDao {
         @Delete
         void delete(Dia dia);
 
-        @Delete
-        void delete(Dia... dia);      // Note... is varargs, here note is an array
+
+        @Query("SELECT sum(vasos) from dia where titulo=:fecha ")
+        String cantidad(Date fecha);
+
+
+        @Query("SELECT * from dia where titulo=:fecha ")
+        Dia getDiaActual(Date fecha);
 
 }
-
-

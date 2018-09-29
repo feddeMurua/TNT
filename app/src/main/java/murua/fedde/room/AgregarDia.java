@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.Serializable;
 import java.lang.ref.WeakReference;
 
 import murua.fedde.R;

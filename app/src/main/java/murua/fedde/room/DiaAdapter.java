@@ -36,7 +36,7 @@ public class DiaAdapter extends RecyclerView.Adapter<DiaAdapter.BeanHolder> {
     @Override
     public void onBindViewHolder(BeanHolder holder, int position) {
         Log.e("bind", "onBindViewHolder: "+ list.get(position));
-        holder.textViewTitle.setText(Integer.toString(list.get(position).getVasos()));
+        holder.textViewTitle.setText((list.get(position).getTitulo()).toString());
     }
 
     @Override

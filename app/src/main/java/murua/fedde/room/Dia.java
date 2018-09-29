@@ -20,7 +20,6 @@ public class Dia implements Serializable {
         this.vasos = vasos;
     }
 
-
     public int getId() {
         return id;
     }
@@ -55,8 +54,6 @@ public class Dia implements Serializable {
         if (id != dia.id ) return false;
         return titulo != null ? titulo.equals(dia.titulo) : dia.titulo== null;
     }
-
-
 
     @Override
     public int hashCode() {

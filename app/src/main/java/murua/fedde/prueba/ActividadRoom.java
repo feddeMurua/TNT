@@ -19,6 +19,7 @@ import java.util.List;
 
 import murua.fedde.R;
 import murua.fedde.room.AgregarDia;
+import murua.fedde.room.AgregarDiaVaso;
 import murua.fedde.room.Dia;
 import murua.fedde.room.DiaAdapter;
 import murua.fedde.room.DiaDatabase;
@@ -96,7 +97,7 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
     private View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            startActivityForResult(new Intent(ActividadRoom.this,AgregarDia.class),100);
+            startActivityForResult(new Intent(ActividadRoom.this,AgregarDiaVaso.class),100);
         }
     };
 

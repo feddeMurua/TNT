@@ -3,9 +3,11 @@ package murua.fedde.room;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
-@Database(entities = { Dia.class }, version = 1)
+@Database(entities = { Dia.class }, version = 1, exportSchema = false) // exportSchema = false para no ver el esquema (warning que aparece)
+@TypeConverters({DateConverter.class})
 public abstract class DiaDatabase extends RoomDatabase {
 
     public abstract DiaDao getDiaDao();
