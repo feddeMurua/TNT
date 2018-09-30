@@ -7,21 +7,20 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import murua.fedde.R;
+import murua.fedde.room.ActividadRoom;
+import murua.fedde.sugar_orm.SugarORM;
 
 //import static murua.fedde.prueba.NotificationUtils.ANDROID_CHANNEL_ID;
 
@@ -198,6 +197,14 @@ public class MainActivity extends Activity {
         Intent mintent = new Intent(MainActivity.this, ActividadRoom.class);
         startActivity(mintent);
     }
+
+    //SUGAR ORM
+
+    public void buttonClick_sugar(View view){
+        Intent mintent = new Intent(MainActivity.this, SugarORM.class);
+        startActivity(mintent);
+    }
+
 
 } // FIN de la clase
 

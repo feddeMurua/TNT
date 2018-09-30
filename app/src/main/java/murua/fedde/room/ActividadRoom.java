@@ -1,4 +1,4 @@
-package murua.fedde.prueba;
+package murua.fedde.room;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,10 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import murua.fedde.R;
-import murua.fedde.room.AgregarDiaVaso;
-import murua.fedde.room.Dia;
-import murua.fedde.room.DiaAdapter;
-import murua.fedde.room.DiaDatabase;
 
 public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDiaItemClick{
 

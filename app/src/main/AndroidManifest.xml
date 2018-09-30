@@ -16,8 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".prueba.SegundaActividad" />
-        <activity android:name=".prueba.ActividadRoom" />
+        <activity android:name=".room.ActividadRoom" />
         <activity android:name=".room.AgregarDiaVaso" />
+        <activity android:name=".sugar_orm.SugarORM" />
     </application>
     <uses-permission android:name="android.permission.CAMERA" />
 </manifest>

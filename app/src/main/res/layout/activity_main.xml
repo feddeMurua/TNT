@@ -12,20 +12,6 @@
 
     <!--- Texts inputs -->
 
-    <!--
-    <EditText
-        android:id="@+id/et_android_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Título"/>
-
-    <EditText
-        android:id="@+id/et_android_author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Autor"/>
-     -->
-
     <Button
         android:id="@+id/notification_button"
         android:layout_width="wrap_content"
@@ -62,5 +48,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ejemplo Room"/>
+
+    <Button
+        android:onClick="buttonClick_sugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ejemplo Sugar ORM"/>
 
 </LinearLayout>

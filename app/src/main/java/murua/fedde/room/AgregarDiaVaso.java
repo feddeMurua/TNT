@@ -11,7 +11,6 @@ import java.lang.ref.WeakReference;
 import java.util.Date;
 
 import murua.fedde.R;
-import murua.fedde.prueba.ActividadRoom;
 import murua.fedde.prueba.MainActivity;
 
 public class AgregarDiaVaso extends AppCompatActivity {
