@@ -55,4 +55,10 @@
         android:layout_height="wrap_content"
         android:text="Ejemplo Sugar ORM"/>
 
+    <Button
+        android:onClick="buttonClick_Test_REST_API"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Solicitud API REST"/>
+
 </LinearLayout>

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="murua.fedde">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +22,7 @@
         <activity android:name=".prueba.SegundaActividad" />
         <activity android:name=".room.ActividadRoom" />
         <activity android:name=".room.AgregarDiaVaso" />
+        <activity android:name=".rest_api.ActividadRestApi" />
         <activity android:name=".sugar_orm.SugarORM" />
         <activity android:name=".sugar_orm.AgregarDesarrollador" />
         <meta-data android:name="DATABASE" android:value="sugar_example.db" />
@@ -26,6 +30,6 @@
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="murua.fedde.sugar_orm" />
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
+
 </manifest>
 

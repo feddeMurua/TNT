@@ -22,6 +22,7 @@ import com.orm.SchemaGenerator;
 import com.orm.SugarDb;
 
 import murua.fedde.R;
+import murua.fedde.rest_api.ActividadRestApi;
 import murua.fedde.room.ActividadRoom;
 import murua.fedde.sugar_orm.SugarORM;
 
@@ -213,6 +214,12 @@ public class MainActivity extends Activity {
         startActivity(mintent);
     }
 
+    // REST API
+
+    public void buttonClick_Test_REST_API(View view){
+        Intent mintent = new Intent(MainActivity.this, ActividadRestApi.class);
+        startActivity(mintent);
+    }
 
 } // FIN de la clase
 
