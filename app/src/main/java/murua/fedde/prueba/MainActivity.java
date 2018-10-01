@@ -18,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orm.SchemaGenerator;
+import com.orm.SugarDb;
+
 import murua.fedde.R;
 import murua.fedde.room.ActividadRoom;
 import murua.fedde.sugar_orm.SugarORM;
@@ -135,6 +138,11 @@ public class MainActivity extends Activity {
                 clean_button.setVisibility(view.VISIBLE);
             }
         });
+
+        // Aca se crea la Base Sugar una sola vez para posterior uso
+        // Crea la Tabla si no Existe
+        SchemaGenerator schemaGenerator = new SchemaGenerator(this);
+        schemaGenerator.createDatabase(new SugarDb(this).getDB());
 
 
     } // FIN método OnCreate

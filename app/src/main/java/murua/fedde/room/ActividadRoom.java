@@ -26,7 +26,7 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
     private RecyclerView recyclerView;
     private DiaDatabase diaDatabase;
     private List<Dia> dias;
-    private DiaAdapter notesAdapter;
+    private DiaAdapter diasAdapter;
     private int pos;
 
     @Override
@@ -70,8 +70,8 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
                 activityReference.get().textViewMsg.setVisibility(View.GONE);
 
                 // create and set the adapter on RecyclerView instance to display list
-                activityReference.get().notesAdapter = new DiaAdapter(dias,activityReference.get());
-                activityReference.get().recyclerView.setAdapter(activityReference.get().notesAdapter);
+                activityReference.get().diasAdapter = new DiaAdapter(dias,activityReference.get());
+                activityReference.get().recyclerView.setAdapter(activityReference.get().diasAdapter);
             }
         }
 
@@ -86,8 +86,8 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(ActividadRoom.this));
         dias = new ArrayList<>();
-        notesAdapter = new DiaAdapter(dias,ActividadRoom.this);
-        recyclerView.setAdapter(notesAdapter);
+        diasAdapter = new DiaAdapter(dias,ActividadRoom.this);
+        recyclerView.setAdapter(diasAdapter);
     }
 
     private View.OnClickListener listener = new View.OnClickListener() {
@@ -129,11 +129,12 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
                                 break;
                             case 1:
                                 ActividadRoom.this.pos = pos;
-                                startActivityForResult(
-                                        new Intent(ActividadRoom.this,
-                                                AgregarDiaVaso.class).putExtra("dia",dias.get(pos)),
-                                        100);
-
+                                if (dias.get(pos).getVasos()>0) {
+                                    startActivityForResult(
+                                            new Intent(ActividadRoom.this,
+                                                    AgregarDiaVaso.class).putExtra("dia", dias.get(pos)),
+                                            100);
+                                }
                                 break;
                         }
                     }
@@ -148,7 +149,7 @@ public class ActividadRoom extends AppCompatActivity implements DiaAdapter.OnDia
                 emptyMsgVisibility = View.VISIBLE;
         }
         textViewMsg.setVisibility(emptyMsgVisibility);
-        notesAdapter.notifyDataSetChanged();
+        diasAdapter.notifyDataSetChanged();
     }
 
     @Override
